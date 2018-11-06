@@ -40,7 +40,7 @@
     state: touch
     path: "{{ bsd_named_conf_log_file }}"
     mode: "0660"
-    owber: "root"
+    owner: "root"
     group: "bind"
 
 #  shell: "touch {{bsd_named_conf_log_file}} && chmod 0660 {{bsd_named_conf_log_file}} && chown root:bind {{bsd_named_conf_log_file}}"
