@@ -13,10 +13,10 @@ $TTL 3600	; 1 hour default TTL
 {% endif %}
 
 {% if item.primary is defined  %}
-;{{ item.primary }}.	IN	A	{{ item.primary_ip }}
+{{ item.primary }}.	IN	A	{{ item.primary_ip }}
 {% endif %}
 {% if item.secondary  %}
-;{{ item.secondary }}.	IN	A	{{ item.secondary_ip }}
+{{ item.secondary }}.	IN	A	{{ item.secondary_ip }}
 {% endif %}
 
 ; Machine Names
