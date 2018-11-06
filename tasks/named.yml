@@ -17,7 +17,7 @@
     dest: "{{ bsd_named_conf_file }}"
     insertafter: "^options "
     regexp: "^\tallow-transfer\t{"
-    line: "\tallow-transfer\t{ {{ bsd_named_conf_allow_transfer_default }} };"
+    line: "\tallow-transfer\t{ {{ bsd_named_conf_allow_transfer_default | join(';') }}; };"
     validate: "named-checkconf %s"
     backup: "{{ bsd_named_backup_conf }}"
   when: bsd_named_conf_allow_transfer_default|length > 0
