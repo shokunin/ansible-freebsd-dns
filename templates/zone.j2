@@ -34,11 +34,21 @@ $TTL 3600	; 1 hour default TTL
 @		IN	MX {{ mx.priority }}	{{ mx.server }}.
 {% endfor %}
 
-; SPF
+{% if item.auto_spf %}
+; Auto-generated SPF TXT records
 {% for mx in item.mx %}
 {{ mx.server }}.	IN	TXT	"v=spf1 a -all"
 {% endfor %}
 {{ item.zone }}.	IN	TXT	"v=spf1 a:{{ item.mx_domain }} -all"
+{% endif %}
+
+
+{% if item.txt is defined %}
+; Generated TXT records
+{% for txt in item.txt %}
+{{ item.zone }}.	IN	TXT	"{{ txt }}"
+{% endfor %}
+{% endif %}
 
 ; DNS Servers
 {% for server in item.server %}
